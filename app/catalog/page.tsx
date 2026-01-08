@@ -1,15 +1,24 @@
-import CamperList from "@/components/CamperList/CamperList";
-import { getCampers } from "@/lib/api";
+'use client';
 
-const Catalog = async() => {
-    const campersCatalog = await getCampers();
-    // console.log("catalog:", campersCatalog);
+import CamperList from "@/components/CamperList/CamperList";
+import { getCampers, Camper } from "@/lib/api";
+import { useState } from "react";
+
+const Catalog = () => {
+  const [campers, setCampers] = useState<Camper[]>([]);
+    const handlClick = async() => {
+      const campersCatalog = await getCampers();
+      if (campersCatalog?.items) {
+        setCampers(campersCatalog.items);
+      }
+    }
   return (
     <section>
         <h1>Catalog Page</h1>
-        {campersCatalog?.items?.length > 0 &&<CamperList catalog={campersCatalog.items}/>}
+        <button onClick={handlClick}>Load Campers</button>
+        {campers?.length > 0 &&<CamperList catalog={campers}/>}
     </section>
-  );
+  ); 
 };
 
 export default Catalog;
