@@ -40,7 +40,7 @@ export type Campers = {
 };
 
 export type CatalogResponse = {
-  notes: Campers[];
+  items: Campers[];
   total: number;
 };
 
