@@ -1,18 +1,39 @@
 /* components/Header/Header.module.css */
 
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 24px;
-  padding: 12px;
+  padding: 24px 64px;
   border-block-end: 1px solid #ccc;
 }
-
-.navigation {
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 12px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: center;
+ 
+}
+.listLink {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 8px 12px;
   list-style-type: none;
+}
+.navLink {
+  text-decoration: none;
+  color: #101828;
+  font-weight: 500;
+  font-size: 16px;
+line-height: 150%;
+text-align: center;
+   
+}
+.navLink:hover {
+  color: #D84343;
 }

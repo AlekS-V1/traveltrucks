@@ -1,4 +1,5 @@
 import { Camper } from "@/lib/api";
+import Link from "next/link";
 
 type CamperItemProps = {
     item: Camper;
@@ -6,7 +7,9 @@ type CamperItemProps = {
 
 const CamperItem = ({item}: CamperItemProps) => {
     return (
-        <li>{item.name}</li>
+        <li>
+            <Link href={`/catalog/${item.id}`} >{item.name}</Link>
+        </li>
     )
 }
 

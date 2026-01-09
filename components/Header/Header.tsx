@@ -1,16 +1,22 @@
 // components/Header/Header.tsx
 import Link from "next/link";
+import css from "./Header.module.css";
 
 const Header = () => {
-  return <header>
-    <h2>TravelTrucks</h2>
-  <nav>
-    <ul>
-        <li><Link href="/">Home</Link></li> 
-        <li><Link href="/catalog">Catalog</Link></li>
-    </ul>
-  </nav>
-</header>;
+  return (
+<header className={css.header}>
+    <div className={css.container}>
+      <svg className={css.logo} width="136" height="16">
+        <use href='/sprite.svg#LogoTraveltrucks' /></svg>
+    <nav className={css.nav}>
+      <ul className={css.listLink}>
+          <li><Link href="/" className={css.navLink}>Home</Link></li> 
+          <li><Link className={css.navLink} href="/catalog">Catalog</Link></li>
+      </ul>
+    </nav>
+    </div>
+</header>
+  )
 }
 
 export default Header;
