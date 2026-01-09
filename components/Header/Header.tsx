@@ -6,8 +6,10 @@ const Header = () => {
   return (
 <header className={css.header}>
     <div className={css.container}>
-      <svg className={css.logo} width="136" height="16">
+      <Link href="/">
+        <svg className={css.logo} width="136" height="16">
         <use href='/sprite.svg#LogoTraveltrucks' /></svg>
+      </Link>
     <nav className={css.nav}>
       <ul className={css.listLink}>
           <li><Link href="/" className={css.navLink}>Home</Link></li> 

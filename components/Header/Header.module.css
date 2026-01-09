@@ -1,12 +1,13 @@
 /* components/Header/Header.module.css */
 
 .header {
-  padding: 24px 64px;
-  border-block-end: 1px solid #ccc;
-}
-.container {
   max-width: 1440px;
   margin: 0 auto;
+  background: #F7F7F7;
+  border-block-end: 1px solid #F2F4F7;
+}
+.container {
+  padding: 24px 64px;  
   display: flex;
   align-items: center;
 }
@@ -30,8 +31,8 @@
   color: #101828;
   font-weight: 500;
   font-size: 16px;
-line-height: 150%;
-text-align: center;
+  line-height: 150%;
+  text-align: center;
    
 }
 .navLink:hover {
