@@ -1,14 +1,29 @@
-import { getCamperbyId, getCampers } from "@/lib/api";
+import { getCamperbyId } from "@/lib/api";
 
-type Props = {
-    params: Promise<{ id: string }>;
+export default async function CamperDetail({ params }: { params: Promise<{ id: string }> }) {
+  const resolved = await params;
+
+  const camper = await getCamperbyId(resolved.id);
+
+  return (
+    <div>
+      <h2>{camper.name}</h2>
+      <p>{camper.description}</p>
+      <p>{camper.price}</p>
+      <p>{camper.rating}</p>
+      <p>{camper.location}</p>
+      <p>{camper.transmission}</p>
+      <p>{camper.engine}</p>
+
+      {camper.AC && <p>AC</p>}
+      {camper.bathroom && <p>Bathroom</p>}
+      {camper.kitchen && <p>Kitchen</p>}
+      {camper.TV && <p>TV</p>}
+      {camper.radio && <p>Radio</p>}
+      {camper.refrigerator && <p>Refrigerator</p>}
+      {camper.microwave && <p>Microwave</p>}
+      {camper.gas && <p>Gas</p>}
+      {camper.water && <p>Water</p>}
+    </div>
+  );
 }
-
-const CamperDetail = async({params}: Props) => {
-    const { id } = await params;
-    const camper = await getCamperbyId(id);
-    console.log(camper);
-    return <div>Camper Detail Page</div>;
-}
-
-export default CamperDetail;

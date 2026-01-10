@@ -1,18 +1,11 @@
-'use client';
-
-import CamperList from "@/components/CamperList/CamperList";
-import { getCampers, Camper } from "@/lib/api";
-import { useState } from "react";
+import { VehType } from "@/lib/api";
 import css from "./catalog.module.css";
+import Link from "next/link";
 
+const form: VehType[] = ["panelTruck", "fullyIntegrated", "alcove"];
 const Catalog = () => {
-  const [campers, setCampers] = useState<Camper[]>([]);
-    const handlClick = async() => {
-      const campersCatalog = await getCampers();
-      if (campersCatalog?.items) {
-        setCampers(campersCatalog.items);
-      }
-    }
+  console.log("I AM CATALOG PAGE");
+  
   return (
     <section className={css.catalogSection}>
 
@@ -73,29 +66,47 @@ const Catalog = () => {
 
               <h6  className={css.labelFiltr}>Vehicle type</h6>
               <div className={css.borderFiltr} />
-              <div className={css.filterButtons}>
-                <button className={css.buttonFilter}>
-                  <svg className={css.iconFilter} width="32" height="32">
-                    <use href='/sprite.svg#van' />
-                  </svg>Van</button>
-                <button className={css.buttonFilter}>
-                  <svg className={css.iconFilter} width="32" height="32">
-                    <use href='/sprite.svg#full_integrated' />
-                  </svg>Fully Integrated</button>
-                <button className={css.buttonFilter}>
-                  <svg className={css.iconFilter} width="32" height="32">
-                    <use href='/sprite.svg#alcove' />
-                  </svg>Alcove</button>
-              </div>
+              <ul className={css.filterButtons}>
+                <li className={css.buttonFilter}>
+                  <Link href="/catalog/filter/panelTruck">
+                    <div>
+                    <svg className={css.iconFilter} width="32" height="32">
+                      <use href='/sprite.svg#van' />
+                    </svg>
+                    <p>Van</p>
+                  </div>
+                  </Link>
+                </li>
+                <li className={css.buttonFilter}>
+                  <Link href="/catalog/filter/fullyIntegrated">
+                    <div>
+                    <svg className={css.iconFilter} width="32" height="32">
+                      <use href='/sprite.svg#full_integrated' />
+                    </svg>
+                    <p>Fully Integrated</p>
+                  </div>
+                  </Link>
+                </li>
+                <li className={css.buttonFilter}>
+                  <Link href="/catalog/filter/alcove">
+                  <div>
+                    <svg className={css.iconFilter} width="32" height="32">
+                      <use href='/sprite.svg#alcove' />
+                    </svg>
+                    <p>Alcove</p>
+                  </div>
+                  </Link>
+                </li>
+              </ul>
 
             </div>
               
             </div>
-            <button className={css.buttonSearch} onClick={handlClick}>Search</button>
+            {/* <button className={css.buttonSearch} onClick={handlClick}>Search</button> */}
           </div>
 
           <div className={css.catalog}>
-            {campers?.length > 0 &&<CamperList catalog={campers}/>}
+            {/* {campers?.length > 0 &&<CamperList catalog={campers}/>} */}
           </div>
         </div>
 

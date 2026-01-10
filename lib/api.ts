@@ -1,13 +1,13 @@
 import axios from "axios";
 
 export type Camper = {
-      id: number;
+      id: string;
       name: string;
       price: number;
       rating: number;
       location: string;
       description: string;
-      form: string;
+      form: VehType;
       length: number;
       width: number;
       height: number;
@@ -44,14 +44,18 @@ export type CatalogResponse = {
   total: number;
 };
 
-axios.defaults.baseURL = "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io";
+export type VehType = "panelTruck" | "fullyIntegrated" | "alcove";
 
-export const getCampers = async () => {
-  const response = await axios.get<CatalogResponse>("/campers");
+// export type VehEquipment = "AC" | "Automatic" | "Bathroom" | "Kitchen" | "TV" | "Radio" | "Refrigerator" | "Microwave" | "Gas" | "Water";
+
+// axios.defaults.baseURL = "http://localhost:3000";
+
+export const getCampers = async (filters?: { form?: string }) => {
+  const response = await axios.get<CatalogResponse>("http://localhost:3000/api/campers", { params: filters });
   return response.data;
 }
 
 export const getCamperbyId = async (id: string) => {
-  const response = await axios.get<Camper>(`/campers/${id}`);
+  const response = await axios.get<Camper>(`http://localhost:3000/api/campers/${id}`);
   return response.data;
 }
