@@ -1,0 +1,148 @@
+.catalogSection {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+.container {
+  padding: 24px 64px;  
+  display: flex;
+  /* align-items: center; */
+}
+
+.catalogMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 360px;
+}
+.label {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #6C717B;
+    margin-bottom: 8px;
+}
+.inputWrapper {
+  position: relative;
+  /* transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1); */
+}
+
+.iconInput {
+  position: absolute;
+  top: 50%;
+  left: 20px;  
+  transform: translateY(-50%);
+  fill: #6c717b;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* .inputWrapper:focus-within .iconInput {
+  fill: #101828;
+} */
+
+.input:not(:placeholder-shown) ~ .iconInput {
+  fill: #101828;
+}
+
+
+.input {
+    border-radius: 12px;
+    border: none;
+    padding: 18px 48px;
+    background: #F7F7F7;
+    width: 360px;
+    height: 56px;    
+}
+
+.input::placeholder {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #6c717b;
+}
+
+.filterContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+.titleFiltrs {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: #475467;
+}
+
+.labelFiltr {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    color: #101828;
+    margin-top: 8px;
+}
+
+.borderFiltr {
+    border: #dadde1 1px solid;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+.filterButtons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.buttonFilter {
+    border: 1px solid #DADDE1;
+border-radius: 12px;
+width: 112px;
+height: 96px;
+background-color: transparent;
+    cursor: pointer;
+font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+letter-spacing: -0.01em;
+text-align: center;
+color: #101828;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 8px;
+padding: 2px;
+}
+
+/* .iconFilter {
+    margin-bottom: 8px;
+} */
+.buttonFilter:hover {
+    border-color: #E44848;
+    transition: border-color 0.3s ease;
+}
+
+.buttonSearch {
+    border-radius: 200px;
+padding: 16px 60px;
+border: none;
+cursor: pointer;
+width: 166px;
+margin: 0 auto;
+background: #E44848;
+font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+letter-spacing: -0.01em;
+color: #FFFFFF;
+
+}
+
+.buttonSearch:hover {
+    background: #D84343;
+    transition: background 0.3s ease;
+}
+.catalog {
+    flex-grow: 1;
+    padding-left: 24px;
+}
