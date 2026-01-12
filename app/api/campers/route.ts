@@ -5,7 +5,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const form = searchParams.get("form");
 
-  let items = campers;
+  let items = campers.items;
 
   if (form && form !== "all") {
     items = items.filter((c) => c.form === form);

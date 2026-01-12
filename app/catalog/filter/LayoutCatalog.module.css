@@ -1,0 +1,19 @@
+.catalogSection {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 64px;
+    padding: 24px 64px
+}
+
+.catalogMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 360px;
+}
+
+.catalog {
+    flex-grow: 1;
+}

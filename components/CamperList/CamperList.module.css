@@ -2,7 +2,141 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
     /* display: grid; */
     /* grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); */
+    
+}
+
+.listItem {
+    border: 1px solid #dadde1;
+    border-radius: 20px;
+    padding: 24px;
+    width: 888px;
+    min-height: 368px;
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+}
+
+.camperImage {
+    border-radius: 10px;
+    width: 292px;
+    min-height: 320px;
+    object-fit: cover;
+}
+.camperCard {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.boxTop {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.boxHeader {
+    width: 524px;
+    height: 32px;
+    /* display: flex; */
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.namePrice {
+    display: flex;
+    flex-direction: row;
     gap: 16px;
 }
+
+.name {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 133%;
+    color: #101828;
+}
+.price {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 133%;
+    color: #101828;
+}
+
+.price::before {
+  content: "€";
+  font-family: "Inter";
+}
+
+.iconStar {
+    cursor: pointer;
+    fill: #E44848;
+}
+
+.boxInfo {
+    width: 524px;
+    height: 24px;
+    display: flex;
+    flex-direction: row;
+}
+
+.rating {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #101828;
+}
+
+.location {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #101828;
+    margin-left: 24px;
+}
+.description {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #475467;
+}
+.options {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    /* margin-top: 16px; */
+}
+.equipment {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: center;
+    color: #101828;
+    border-radius: 100px;
+    padding: 12px 18px;
+    background: #f2f4f7;
+}
+.iconFilter {
+    margin-right: 8px;
+    vertical-align: middle;
+    fill: #101828;
+}
+.buttonShowMore {
+    border-radius: 200px;
+    height: 56px;
+    width: 166px;
+    background: #e44848;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }

@@ -3,9 +3,10 @@ import campers from "@/data/campers.json";
 
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const camper = campers.find((c) => String(c.id) === params.id);
+  const { id } = await params;
+  const camper = campers.items.find((c) => String(c.id) === id);
 
   if (!camper) {
     return NextResponse.json({ message: "Not found" }, { status: 404 });

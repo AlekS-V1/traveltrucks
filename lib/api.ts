@@ -24,13 +24,13 @@ export type Camper = {
       microwave: boolean,
       gas: boolean;
       water: boolean;
-      gallery: string[];
-      reviews: [
+      gallery:[
         {
-          reviewer_name: string;
-          reviewer_rating: number;
-          comment: string;
-        },
+          thumb: string;
+          original: string;
+        }
+      ];
+      reviews: [
         {
           reviewer_name: string;
           reviewer_rating: number;
@@ -48,14 +48,14 @@ export type VehType = "panelTruck" | "fullyIntegrated" | "alcove";
 
 // export type VehEquipment = "AC" | "Automatic" | "Bathroom" | "Kitchen" | "TV" | "Radio" | "Refrigerator" | "Microwave" | "Gas" | "Water";
 
-// axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io";
 
 export const getCampers = async (filters?: { form?: string }) => {
-  const response = await axios.get<CatalogResponse>("http://localhost:3000/api/campers", { params: filters });
+  const response = await axios.get<CatalogResponse>("/campers", { params: filters });
   return response.data;
 }
 
 export const getCamperbyId = async (id: string) => {
-  const response = await axios.get<Camper>(`http://localhost:3000/api/campers/${id}`);
+  const response = await axios.get<Camper>(`/campers/${id}`);
   return response.data;
 }

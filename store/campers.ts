@@ -2,42 +2,46 @@
 import { create } from "zustand";
 import { Camper, getCampers } from "@/lib/api";
 
-type CamperStore = {
-  campers: Camper[];
-  filtered: Camper[];
-  isLoaded: boolean;
-  load: () => Promise<void>;
-  filterByForm: (form?: string) => void;
+interface CamperFilters {
+  location: string;
+  form: string | null;
+  transmission: string;
+  AC: boolean;
+  bathroom: boolean;
+  kitchen: boolean;
+  TV: boolean;
+};
+interface CamperStore {
+  // campers: Camper[];
+  // filtered: Camper[];
+  draftFilters: CamperFilters;
+  appliedFilters: CamperFilters;
+  setDraftFilters: (filters: Partial<CamperFilters>) => void;
+  applyFilters: () => void;
+  // isLoaded: boolean;
 };
 
-export const useCamperStore = create<CamperStore>((set, get) => ({
-  campers: [],
-  filtered: [],
-    isLoaded: false,
+const defaultFilters: CamperFilters = {
+  location: "",
+  form: "",
+  transmission: "",
+  AC: false,
+  bathroom: false,
+  kitchen: false,
+  TV: false,
+}
 
-  load: async () => {
-    if (get().isLoaded) return;
-     
-    const response = await getCampers();
-    const items = response.items;
-    set({ 
-        campers: items, 
-        filtered: items, 
-        isLoaded: true 
-    });
-    
-  },
+export const useCampersFilters = create<CamperStore>((set, get) => ({
+draftFilters: defaultFilters,
+appliedFilters: defaultFilters,
 
-  filterByForm: (form) => {
-    const all = get().campers;
+setDraftFilters: (filters) => 
+  set((state) => ({
+  draftFilters: { ...state.draftFilters, ...filters },
+})),
 
-    if (!form || form === "all") {
-      set({ filtered: all });
-      return;
-    }
-
-    set({
-      filtered: all.filter((c) => c.form === form),
-    });
-  },
+  applyFilters: () => 
+    set((state) => ({
+      appliedFilters: { ...state.draftFilters },
+    })),
 }));
