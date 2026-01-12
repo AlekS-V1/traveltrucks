@@ -1,15 +1,16 @@
 // store/campers.ts
 import { create } from "zustand";
-import { Camper, getCampers } from "@/lib/api";
+import { persist } from "zustand/middleware";
 
-interface CamperFilters {
+
+export interface CamperFilters {
   location: string;
-  form: string | null;
+  form: string;
   transmission: string;
-  AC: boolean;
-  bathroom: boolean;
-  kitchen: boolean;
-  TV: boolean;
+  AC: string;
+  bathroom: string;
+  kitchen: string;
+  TV: string;
 };
 interface CamperStore {
   // campers: Camper[];
@@ -25,10 +26,10 @@ const defaultFilters: CamperFilters = {
   location: "",
   form: "",
   transmission: "",
-  AC: false,
-  bathroom: false,
-  kitchen: false,
-  TV: false,
+  AC: "",
+  bathroom: "",
+  kitchen: "",
+  TV: "",
 }
 
 export const useCampersFilters = create<CamperStore>((set, get) => ({
@@ -45,3 +46,42 @@ setDraftFilters: (filters) =>
       appliedFilters: { ...state.draftFilters },
     })),
 }));
+
+interface FavoritesState {
+  favoriteCampers: Set<string>;
+  toggleFavorite: (camperId: string) => void;
+  isFavorite: (camperId: string) => boolean;  
+};
+
+interface FavoritesPersist {
+  favoriteCampers: string[];
+}
+
+export const useFavoriteCampers = create<FavoritesState>()(persist<FavoritesState, [], [], FavoritesPersist>(
+  (set, get) => ({
+    favoriteCampers: new Set(),
+    toggleFavorite: (camperId) => {
+        const updatedFavorites = new Set(get().favoriteCampers);
+        updatedFavorites.has(camperId) 
+        ? updatedFavorites.delete(camperId) 
+        : updatedFavorites.add(camperId);
+        set({ favoriteCampers: updatedFavorites });
+      },
+
+    isFavorite: (camperId) => get().favoriteCampers.has(camperId)
+  }),
+
+  {
+    name: "favorite-campers-storage",
+    // Set → Array conversion for persistence
+    partialize: (state) => ({ favoriteCampers: [...state.favoriteCampers],
+    }),
+    // Array → Set conversion on rehydration
+    onRehydrateStorage: () => (state) => {
+      if(state?.favoriteCampers) {
+        state.favoriteCampers = new Set(state.favoriteCampers);
+      }
+    },
+  }
+
+))

@@ -1,11 +1,11 @@
 'use client';
-import { Camper } from "@/lib/api"
-// import CamperItem from "../CamperItem/CamperItem";
+
 import css from "./CamperList.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { useCampersQuery } from "@/lib/useCampersQuery";
 import { useCampersFilters } from "@/store/campers";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 const CampersList = () => {
     const { data } = useCampersQuery();
@@ -37,14 +37,19 @@ const CampersList = () => {
                             <div className={css.boxHeader}>
                                 <div className={css.namePrice}>
                                     <h2 className={css.name}>{camper.name}</h2>
-                                    <p className={css.price}>{camper.price}</p>
+                                    
+                                    <div className={css.priceHeart}>
+                                        <p className={css.price}>{camper.price}</p>
+                                        <FavoriteButton camperId={camper.id} />  
+                                    </div>
                                 </div>
-                                <svg className={css.iconStar} width="32" height="32">
-                                    <use href='/sprite.svg#map' />
-                                </svg>
-                            </div>
+                                
+                            </div> 
 
                             <div className={css.boxInfo}>
+                                <svg className={css.iconStar} width="20" height="20">
+                                    <use href='/sprite.svg#star_disable' />
+                                </svg>
                                 <p className={css.rating}>{camper.rating}
                                 <span className={css.rating}>({camper.reviews.length} Reviews)</span>
                                 </p>

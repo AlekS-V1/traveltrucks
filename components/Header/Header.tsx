@@ -8,7 +8,7 @@ const Header = () => {
     <div className={css.container}>
       <Link href="/">
         <svg className={css.logo} width="136" height="16">
-        <use href='/sprite.svg#LogoTraveltrucks' /></svg>
+        <use href='/logo.svg' /></svg>
       </Link>
     <nav className={css.nav}>
       <ul className={css.listLink}>

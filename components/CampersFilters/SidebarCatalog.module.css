@@ -5,6 +5,12 @@
   /* align-items: center; */
 }
 
+.catalogMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
 .label {
     font-weight: 400;
     font-size: 16px;
@@ -82,8 +88,9 @@
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+    list-style: none;
 }
-.buttonFilter {
+/* .buttonFilter {
     border: 1px solid #DADDE1;
 border-radius: 12px;
 width: 112px;
@@ -102,21 +109,13 @@ align-items: center;
 justify-content: center;
 gap: 8px;
 padding: 2px;
-}
+} */
 
 /* .iconFilter {
     margin-bottom: 8px;
 } */
-.buttonFilter:hover,
-.buttonFilter:focus,
-.buttonFilter:active {
-    border-color: #E44848;
-    transition: border-color 0.3s ease;
-}
-
-.buttonFilter:focus-visible {
-    border: 2px solid #E44848;
-    background-color: #FFF1F1;
+.searchButtonWrapper {
+    display: flex;
 }
 
 .buttonSearch {

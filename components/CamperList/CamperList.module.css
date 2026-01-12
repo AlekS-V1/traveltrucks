@@ -52,6 +52,7 @@
     display: flex;
     flex-direction: row;
     gap: 16px;
+    justify-content: space-between;
 }
 
 .name {
@@ -59,6 +60,15 @@
     font-size: 24px;
     line-height: 133%;
     color: #101828;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+.priceHeart {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
 }
 .price {
     font-weight: 600;
@@ -72,16 +82,17 @@
   font-family: "Inter";
 }
 
-.iconStar {
-    cursor: pointer;
-    fill: #E44848;
-}
-
 .boxInfo {
     width: 524px;
     height: 24px;
     display: flex;
     flex-direction: row;
+    gap: 4px;
+}
+
+.iconStar {
+     fill: #f59e0b;
+
 }
 
 .rating {
@@ -103,14 +114,22 @@
     font-size: 16px;
     line-height: 150%;
     color: #475467;
+    width: 520px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .options {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 8px;
-    /* margin-top: 16px; */
+    width: 460px;
 }
+.options > *:nth-child(n+5) { 
+    display: none; 
+}
+
 .equipment {
     font-weight: 500;
     font-size: 16px;
