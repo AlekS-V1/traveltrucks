@@ -1,4 +1,5 @@
 // store/campers.ts
+import { Camper } from "@/lib/api";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -11,15 +12,25 @@ export interface CamperFilters {
   bathroom: string;
   kitchen: string;
   TV: string;
+
+  // page?: number;
+  // limit?: number;
+  // items: Camper[]
 };
+
 interface CamperStore {
-  // campers: Camper[];
-  // filtered: Camper[];
   draftFilters: CamperFilters;
   appliedFilters: CamperFilters;
   setDraftFilters: (filters: Partial<CamperFilters>) => void;
   applyFilters: () => void;
-  // isLoaded: boolean;
+
+  page: number;
+  limit: number;
+  items: Camper[];
+  total: number;
+  incrementPage: () => void;
+  resetItems: () => void;
+  appendItems: (newItems: Camper[], total: number) => void;
 };
 
 const defaultFilters: CamperFilters = {
@@ -30,9 +41,26 @@ const defaultFilters: CamperFilters = {
   bathroom: "",
   kitchen: "",
   TV: "",
+  // page: 1,
+  // limit: 3,
+  // items: []
 }
 
 export const useCampersFilters = create<CamperStore>((set, get) => ({
+
+  page: 1,
+  limit: 2,
+  items: [],
+  total: 0,
+
+  incrementPage: () => 
+    set((state) => ({ page: state.page + 1 })),
+  resetItems: () => 
+    set({ items: [], page: 1 , total: 0}),
+  appendItems: (newItems, total) => 
+    // set((state) => ({ items: [...state.items, ...newItems], total: state.total + newItems.length })),
+  set((state) => ({ items: [...state.items, ...newItems], total })),
+
 draftFilters: defaultFilters,
 appliedFilters: defaultFilters,
 
@@ -41,10 +69,13 @@ setDraftFilters: (filters) =>
   draftFilters: { ...state.draftFilters, ...filters },
 })),
 
-  applyFilters: () => 
-    set((state) => ({
-      appliedFilters: { ...state.draftFilters },
-    })),
+  applyFilters: () =>
+  set((state) => ({
+    appliedFilters: { ...state.draftFilters },
+    items: [],        // ← очищаємо картки
+    page: 1,          // ← повертаємо на першу сторінку
+    total: 0,         // ← скидаємо total
+  })),
 }));
 
 interface FavoritesState {

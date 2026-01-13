@@ -145,7 +145,8 @@
     vertical-align: middle;
     fill: #101828;
 }
-.buttonShowMore {
+.buttonShowMore, 
+.loadMore {
     border-radius: 200px;
     height: 56px;
     width: 166px;
@@ -158,4 +159,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    }
+    .loadMore {
+       border: none;
+        cursor: pointer;
+        margin-top: 24px;
     }

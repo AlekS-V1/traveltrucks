@@ -1,3 +1,4 @@
+import { CamperFilters } from "@/store/campers";
 import axios from "axios";
 
 export type Camper = {
@@ -50,8 +51,21 @@ export type VehType = "panelTruck" | "fullyIntegrated" | "alcove";
 
 axios.defaults.baseURL = "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io";
 
-export const getCampers = async (filters?: { form?: string }) => {
-  const response = await axios.get<CatalogResponse>("/campers", { params: filters });
+export const getCampers = async (page: number, limit: number, filters?: CamperFilters) => {
+  const params = new URLSearchParams({
+    page: page.toString(),
+    limit: limit.toString(),
+  });
+  
+  if (filters) {
+    Object.entries(filters).forEach(([key, value]) => {
+      if (value) {
+        params.append(key, value);
+      }
+    });
+  }
+  
+  const response = await axios.get<CatalogResponse>("/campers", { params });
   return response.data;
 }
 

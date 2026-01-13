@@ -6,13 +6,23 @@ import Image from "next/image";
 import { useCampersQuery } from "@/lib/useCampersQuery";
 import { useCampersFilters } from "@/store/campers";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
+import { useEffect } from "react";
 
 const CampersList = () => {
     const { data } = useCampersQuery();
-    const appliedFilters = useCampersFilters((state) => state.appliedFilters);
-      if (!data) return <p>Loading...</p>;
+    // const appliedFilters = useCampersFilters((state) => state.appliedFilters);
+    const { appliedFilters, items, appendItems, incrementPage, page, total, limit } = useCampersFilters();
+      
+    useEffect(()=> {
+        if (data?.items) {
+            appendItems(data.items, data.total);
+        }
+    }, [data]);
+    if (!data) return <p>Loading...</p>;
 
-    const filteredCampers = data.items.filter((camper) => {
+    const hasMore = page * limit < total;  
+
+    const filteredCampers = items.filter((camper) => {
         if (appliedFilters.location && !camper.location.toLowerCase().includes(appliedFilters.location.toLowerCase())) return false;
         if (appliedFilters.transmission && camper.transmission !== appliedFilters.transmission) return false;
         if (appliedFilters.AC && !camper.AC) return false;
@@ -23,6 +33,7 @@ const CampersList = () => {
     });
 
     return (
+    <>
         <ul className={css.camperList}>
             {filteredCampers.map((camper) => (
                 <li key={camper.id} className={css.listItem}>
@@ -39,7 +50,7 @@ const CampersList = () => {
                                     <h2 className={css.name}>{camper.name}</h2>
                                     
                                     <div className={css.priceHeart}>
-                                        <p className={css.price}>{camper.price}</p>
+                                        <p className={css.price} >{camper.price.toFixed(2)}</p>
                                         <FavoriteButton camperId={camper.id} />  
                                     </div>
                                 </div>
@@ -118,7 +129,13 @@ const CampersList = () => {
                 </li>
             ))}
         </ul>
-    )
+        {hasMore && (
+            <button className={css.loadMore} 
+            onClick={incrementPage}>Load More</button>)}
+    
+    </>
+        );
 }
 
 export default CampersList;
+
