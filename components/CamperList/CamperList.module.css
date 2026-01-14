@@ -31,6 +31,7 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    width: 460px;
 }
 
 .boxTop {
@@ -87,11 +88,11 @@
     height: 24px;
     display: flex;
     flex-direction: row;
-    gap: 4px;
 }
 
 .iconStar {
      fill: #f59e0b;
+     margin-right: 4px;
 
 }
 
@@ -125,9 +126,6 @@
     flex-wrap: wrap;
     gap: 8px;
     width: 460px;
-}
-.options > *:nth-child(n+5) { 
-    display: none; 
 }
 
 .equipment {

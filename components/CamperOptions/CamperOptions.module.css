@@ -1,0 +1,22 @@
+.options {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    
+}
+.equipment {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: center;
+    color: #101828;
+    border-radius: 100px;
+    padding: 12px 18px;
+    background: #f2f4f7;
+}
+.iconFilter {
+    margin-right: 8px;
+    vertical-align: middle;
+    fill: #101828;
+}

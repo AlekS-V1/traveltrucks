@@ -49,7 +49,7 @@ const defaultFilters: CamperFilters = {
 export const useCampersFilters = create<CamperStore>((set, get) => ({
 
   page: 1,
-  limit: 2,
+  limit: 4,
   items: [],
   total: 0,
 
@@ -58,8 +58,11 @@ export const useCampersFilters = create<CamperStore>((set, get) => ({
   resetItems: () => 
     set({ items: [], page: 1 , total: 0}),
   appendItems: (newItems, total) => 
-    // set((state) => ({ items: [...state.items, ...newItems], total: state.total + newItems.length })),
-  set((state) => ({ items: [...state.items, ...newItems], total })),
+    set((state) => {
+      const existingIds = new Set(state.items.map(item => item.id));
+      const uniqueNewItems = newItems.filter(item => !existingIds.has(item.id));
+      return { items: [...state.items, ...uniqueNewItems], total };
+    }),
 
 draftFilters: defaultFilters,
 appliedFilters: defaultFilters,

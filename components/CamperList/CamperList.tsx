@@ -7,6 +7,7 @@ import { useCampersQuery } from "@/lib/useCampersQuery";
 import { useCampersFilters } from "@/store/campers";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import { useEffect } from "react";
+import CamperOptions from "../CamperOptions/CamperOptions";
 
 const CampersList = () => {
     const { data } = useCampersQuery();
@@ -57,73 +58,27 @@ const CampersList = () => {
                                 
                             </div> 
 
-                            <div className={css.boxInfo}>
-                                <svg className={css.iconStar} width="20" height="20">
-                                    <use href='/sprite.svg#star_disable' />
-                                </svg>
-                                <p className={css.rating}>{camper.rating}
-                                <span className={css.rating}>({camper.reviews.length} Reviews)</span>
+                            <div className={css.boxInfo}>                                
+                                <p className={css.rating}>
+                                    <svg className={css.iconStar} width="16" height="16">
+                                        <use href='/sprite.svg#star_disable' />
+                                    </svg>{camper.rating}
+                                    <span className={css.rating}>({camper.reviews.length} Reviews)</span>
                                 </p>
-                                <p className={css.location}><svg className={css.iconFilter} width="20" height="20">
-                                    <use href='/sprite.svg#map' />
-                                </svg>{camper.location}</p>
+                                <p className={css.location}>
+                                    <svg className={css.iconFilter} width="20" height="20">
+                                        <use href='/sprite.svg#map' />
+                                    </svg>{camper.location}
+                                </p>
                             </div>
                         </div>
 
-                        <p className={css.description}>{camper.description}</p>
-
-                        <div className={css.options}>
-                            <p className={css.equipment}>
-                                <svg className={css.iconFilter} width="20" height="20">
-                                    <use href='/sprite.svg#diagram' />
-                                </svg> 
-                                {camper.transmission.charAt(0).toUpperCase() + camper.transmission.slice(1)}</p>
-                            <p className={css.equipment}>
-                                <svg className={css.iconFilter} width="20" height="20">
-                                    <use href='/sprite.svg#fuel-pump' />
-                                </svg>
-                                {camper.engine.charAt(0).toUpperCase() + camper.engine.slice(1)}</p>
-                            {camper.AC && <p className={css.equipment}>
-                                <svg className={css.iconFilter} width="20" height="20">
-                                    <use href='/sprite.svg#ac' />
-                                </svg>AC</p>}
-                            {camper.bathroom && <p className={css.equipment}>
-                                <svg className={css.iconFilter} width="20" height="20">
-                                    <use href='/sprite.svg#bathroom' />
-                                </svg>Bathroom</p>}
-                            {camper.kitchen && <p className={css.equipment}>
-                                <svg className={css.iconFilter} width="20" height="20">
-                                    <use href='/sprite.svg#cup' />
-                                </svg>Kitchen</p>}
-                            {camper.TV && <p className={css.equipment}>
-                                <svg className={css.iconFilter} width="20" height="20">
-                                    <use href='/sprite.svg#tv' />
-                                </svg>TV</p>}
-                            {camper.radio && <p className={css.equipment}>
-                                <svg className={css.iconFilter} width="20" height="20">
-                                    <use href='/sprite.svg#ui-radios' />
-                                </svg>Radio</p>}
-                            {camper.refrigerator && <p className={css.equipment}>
-                                <svg className={css.iconFilter} width="20" height="20">
-                                    <use href='/sprite.svg#solar_fridge' />
-                                </svg>Refrigerator</p>}
-                            {camper.microwave && <p className={css.equipment}>
-                                <svg className={css.iconFilter} width="20" height="20">
-                                    <use href='/sprite.svg#microwave' />
-                                </svg>Microwave</p>}
-                            {camper.gas && <p className={css.equipment}>
-                                <svg className={css.iconFilter} width="20" height="20">
-                                    <use href='/sprite.svg#gas' />
-                                </svg>Gas</p>}
-                            {camper.water && <p className={css.equipment}>
-                                <svg className={css.iconFilter} width="20" height="20">
-                                    <use href='/sprite.svg#ion_water' />
-                                </svg>Water</p>}
-                        </div> 
-
+                        <p className={css.description}>{camper.description}</p>                        
+                        
+                        <CamperOptions camper={camper} limit={4} />
+                        
                         <div className={css.buttonShowMore}>
-                            <Link href={`/catalog/${camper.id}`}>Show more</Link>
-                            
+                            <Link href={`/catalog/${camper.id}`}>Show more</Link>                            
                         </div>
                     </div>
                 </li>

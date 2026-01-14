@@ -5,6 +5,12 @@ const nextConfig: NextConfig = {
   images: {
     domains: ['ftp.goit.study'],
   },
+  webpack: (config) => {
+    config.ignoreWarnings = [
+      { message: /url\.parse/ },
+    ];
+    return config;
+  },
 
 };
 

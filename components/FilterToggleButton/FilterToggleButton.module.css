@@ -23,6 +23,10 @@ padding: 2px;
 .buttonFilter:active {
   transform: scale(0.95);
 }
+.buttonFilter:hover {
+  background: #ffffff;
+  border-color: #E44848;
+}
 
 .active {
   border-color: #E44848;
