@@ -1,5 +1,5 @@
 // store/campers.ts
-import { Camper } from "@/lib/api";
+import { Camper } from "@/type/type";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -12,10 +12,6 @@ export interface CamperFilters {
   bathroom: string;
   kitchen: string;
   TV: string;
-
-  // page?: number;
-  // limit?: number;
-  // items: Camper[]
 };
 
 interface CamperStore {
@@ -41,9 +37,6 @@ const defaultFilters: CamperFilters = {
   bathroom: "",
   kitchen: "",
   TV: "",
-  // page: 1,
-  // limit: 3,
-  // items: []
 }
 
 export const useCampersFilters = create<CamperStore>((set, get) => ({

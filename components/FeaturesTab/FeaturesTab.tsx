@@ -1,4 +1,4 @@
-import { Camper } from '@/lib/api';
+import { Camper } from '@/type/type';
 import css from './FeaturesTab.module.css';
 import CamperOptions from '../CamperOptions/CamperOptions';
 import VehicleDetails from '../VehicleDetails/VehicleDetails';

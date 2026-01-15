@@ -22,15 +22,9 @@ export function FilterToggleButton<T extends keyof CamperFilters>({
     className ="",
     toggleValue,
 }: FilterToggleButtonProps<T>) {
-    // const [isActive, setIsActive] = useState(value);
-
-    // useEffect(() => {
-    //     setIsActive(value);
-    // }, [value]);
-
+    
     const handleClick = () => {
         const newValue = isActive ? ("" as CamperFilters[T]) : toggleValue;
-        // setIsActive(newValue);
         onChange(newValue);
     };
     return (

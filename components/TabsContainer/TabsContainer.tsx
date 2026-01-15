@@ -14,12 +14,15 @@ interface TabsContainerProps {
 const TabsContainer = ({ camper }: TabsContainerProps) => {
  const [activeTab, setActiveTab] = useState(0);
    
+ const handleTabClick = (index: number) => {
+    setActiveTab(index);
+ }
  return (
        <div className={css.tabsContainer}> 
               <nav className={css.navReviewsFeatures}>
                      <ul className={css.navList}>
-                            <li onClick={() => setActiveTab(0)} className={css.navItem}>Features</li>
-                            <li onClick={() => setActiveTab(1)} className={css.navItem}>Reviews</li>
+                            <li onClick={() => handleTabClick(0)} className={`${css.navItem} ${activeTab === 0 ? css.active : ''}`}>Features</li>
+                            <li onClick={() => handleTabClick(1)} className={`${css.navItem} ${activeTab === 1 ? css.active : ''}`}>Reviews</li>
                      </ul>
               </nav>
               {/* <div className={css.borderSection} /> */}

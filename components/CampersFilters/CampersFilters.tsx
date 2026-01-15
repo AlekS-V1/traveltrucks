@@ -1,12 +1,12 @@
 'use client';
 import { useCampersFilters, CamperFilters } from "@/store/campers"
-// import { VehType } from "@/type/type";
 import css from "./SidebarCatalog.module.css";
 import { FilterToggleButton } from "../FilterToggleButton/FilterToggleButton";
 
 export const CampersFilters = () => {
     const {draftFilters, setDraftFilters, applyFilters} = useCampersFilters();
-    const buttons: Array<{ filterKey: keyof CamperFilters; isActive: boolean; toggleValue: string; onChange: (value: string) => void; icon: string; label: string }> = [ {
+
+    const buttonsEquip: Array<{ filterKey: keyof CamperFilters; isActive: boolean; toggleValue: string; onChange: (value: string) => void; icon: string; label: string }> = [ {
       filterKey: "AC",
       isActive: draftFilters.AC.includes("true"),
       toggleValue: "true",
@@ -48,6 +48,33 @@ export const CampersFilters = () => {
     },
     ]
 
+    const buttonsType: Array<{ filterKey: keyof CamperFilters; isActive: boolean; toggleValue: string; onChange: (value: string) => void; icon: string; label: string }> = [ {
+      filterKey: "form",
+      isActive: draftFilters.form.includes("panelTruck"),
+      toggleValue: "panelTruck",
+      onChange: (value: string) => setDraftFilters({ form: value ? "panelTruck" : ""  }),
+      icon: "/sprite.svg#van",
+      label: "Van",
+    },
+    {
+      filterKey: "form",
+      isActive: draftFilters.form.includes("fullyIntegrated"),
+      toggleValue: "fullyIntegrated",
+      onChange: (value: string) => setDraftFilters({ form: value ? "fullyIntegrated" : "" }),
+      icon: "/sprite.svg#full_integrated",
+      label: "Fully Integrated",
+    },
+    {
+      filterKey: "form",
+      isActive: draftFilters.form.includes("alcove"),
+      toggleValue: "alcove",
+      onChange: (value: string) => setDraftFilters({ form: value ? "alcove" : "" }),
+      icon: "/sprite.svg#alcove",
+      label: "Alcove",
+    },
+    
+    ]
+
     return(
         <div className={css.container}>
           <div className={css.catalogMenu}>
@@ -69,7 +96,7 @@ export const CampersFilters = () => {
               <div className={css.borderFiltr} />
               <div className={css.filterButtons}>
                 
-                  {buttons.map((button) => (<li key={button.filterKey} className={css.options}>
+                  {buttonsEquip.map((button) => (<li key={button.filterKey} className={css.options}>
                     <FilterToggleButton 
                       filterKey={button.filterKey}
                       isActive={button.isActive}
@@ -88,51 +115,17 @@ export const CampersFilters = () => {
               <h6  className={css.labelFiltr}>Vehicle type</h6>
               <div className={css.borderFiltr} />
               <ul className={css.filterButtons}>
-                <li className={css.itemFilter} 
-                  
-                  
-                    >
+                {buttonsType.map((button) => (<li key={button.toggleValue} className={css.itemFilter}>
                     <FilterToggleButton 
-                  filterKey="form"
-                  isActive={draftFilters.form.includes("panelTruck")}
-                  toggleValue="panelTruck"
-                  onChange={(value) => setDraftFilters({ form: value ? "panelTruck" : "" })}
-                  icon="/sprite.svg#van"
-                  label="Van"
-                />
-                  
-                  
-                </li>
-                <li className={css.itemFilter}
+                      filterKey={button.filterKey}
+                      isActive={button.isActive}
+                      toggleValue={button.toggleValue}
+                      onChange={button.onChange}
+                      icon={button.icon}
+                      label={button.label}
+                    /></li>                      
+                  ))}
                 
-                
-                    >
-                      <FilterToggleButton 
-                  filterKey="form"
-                  isActive={draftFilters.form.includes("fullyIntegrated")}
-                  toggleValue="fullyIntegrated"
-                  onChange={(value) => setDraftFilters({ form: value ? "fullyIntegrated" : "" })}
-                  icon="/sprite.svg#full_integrated"
-                  label="Fully Integrated"
-                />
-                  
-                  
-                </li>
-                <li className={css.itemFilter} 
-                
-                
-                    >
-                    <FilterToggleButton 
-                  filterKey="form"
-                  isActive={draftFilters.form.includes("alcove")}
-                  toggleValue="alcove"
-                  onChange={(value) => setDraftFilters({ form: value ? "alcove" : "" })}
-                  icon="/sprite.svg#alcove"
-                  label="Alcove"
-                />
-                  
-                  
-                </li>
               </ul>
 
             </div>

@@ -38,4 +38,4 @@ export type Camper = {
       ]
 };
 
-export type VehType = "panelTruck" | "fullyIntegrated"
+export type VehType = "panelTruck" | "fullyIntegrated" | "alcove";

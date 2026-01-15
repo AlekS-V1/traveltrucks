@@ -19,7 +19,14 @@ const TabsButton = ({labels, onChange}: TabsButtonProps) => {
     return (
         <nav className={css.navReviewsFeatures}>
             <ul className={css.navList}>
-                {labels.map((label, index) => (<li key={index} onClick={() => handleTabClick(index)} className={`${css.navItem} ${activeTab === index ? css.active : ''}`}>{label}</li>))}
+                {labels.map((label, index) => (
+                    <li 
+                        key={index} 
+                        onClick={() => handleTabClick(index)} 
+                        className={`${css.navItem} 
+                        ${activeTab === index ? css.active : ''}`}>
+                        {label}
+                    </li>))}
             </ul>
         </nav>
     );
