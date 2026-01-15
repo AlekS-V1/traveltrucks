@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import css from "./FilterToggleButton.module.css";
 import { CamperFilters } from "@/store/campers";
 
-interface FilterToggleButtonProps<T extends keyof CamperFilters> {
+export interface FilterToggleButtonProps<T extends keyof CamperFilters> {
   filterKey: T;
   isActive?: boolean;
-//   value: CamperFilters[T];
-  onChange: (key: T, value: CamperFilters[T]) => void;
+  onChange: (value: CamperFilters[T]) => void;
   label?: string;
   icon?: string;
   className?: string;
@@ -17,7 +16,6 @@ interface FilterToggleButtonProps<T extends keyof CamperFilters> {
 export function FilterToggleButton<T extends keyof CamperFilters>({
     filterKey,
     isActive,
-    // value,
     onChange,
     label,
     icon,
@@ -33,7 +31,7 @@ export function FilterToggleButton<T extends keyof CamperFilters>({
     const handleClick = () => {
         const newValue = isActive ? ("" as CamperFilters[T]) : toggleValue;
         // setIsActive(newValue);
-        onChange(filterKey, newValue);
+        onChange(newValue);
     };
     return (
         <button 

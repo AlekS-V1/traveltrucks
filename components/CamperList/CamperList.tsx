@@ -11,7 +11,6 @@ import CamperOptions from "../CamperOptions/CamperOptions";
 
 const CampersList = () => {
     const { data } = useCampersQuery();
-    // const appliedFilters = useCampersFilters((state) => state.appliedFilters);
     const { appliedFilters, items, appendItems, incrementPage, page, total, limit } = useCampersFilters();
       
     useEffect(()=> {
@@ -75,7 +74,7 @@ const CampersList = () => {
 
                         <p className={css.description}>{camper.description}</p>                        
                         
-                        <CamperOptions camper={camper} limit={4} />
+                        <ul><CamperOptions camper={camper} limit={4} /></ul>
                         
                         <div className={css.buttonShowMore}>
                             <Link href={`/catalog/${camper.id}`}>Show more</Link>                            

@@ -1,8 +1,12 @@
-import { Camper } from "@/lib/api";
+import { Camper } from "@/type/type";
 import css from "./CamperOptions.module.css";
 import React from "react";
 
-const CamperOptions = ({ camper, limit }: { camper: Camper; limit?: number }) => {
+interface CamperOptionsProps {
+  camper: Camper; 
+  limit?: number
+}
+const CamperOptions = ({ camper, limit }: CamperOptionsProps) => {
   const options = [
     {
       show: true,
@@ -28,7 +32,7 @@ const CamperOptions = ({ camper, limit }: { camper: Camper; limit?: number }) =>
   const visible = limit ? options.slice(0, limit) : options;
 
   return (
-    <div className={css.options}>
+    <li className={css.options}>
       {visible.map((opt, i) => (
         <p key={i} className={css.equipment}>
           <svg className={css.iconFilter} width="20" height="20">
@@ -37,7 +41,7 @@ const CamperOptions = ({ camper, limit }: { camper: Camper; limit?: number }) =>
           {opt.label}
         </p>
       ))}
-    </div>
+    </li>
   );
 };
 

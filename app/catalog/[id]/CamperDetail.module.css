@@ -1,4 +1,7 @@
 .camperCard {
+    width: 1440px;
+    margin: 0 auto;
+    padding: 0 64px;
     
 }
 .boxHeader {
@@ -75,7 +78,7 @@ font-size: 16px;
 line-height: 150%;
 color: #475467;
 }
-.options {
+/* .options {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -91,4 +94,93 @@ color: #475467;
     border-radius: 100px;
     padding: 12px 18px;
     background: #f2f4f7;
+} */
+
+.bottomSection {
+    margin-top: 28px;
+}
+.navReviewsFeatures {}
+.navList {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+}
+.navList li {
+    position: relative;
+    white-space: nowrap;
+}
+.navItem {}
+
+.navList .navItem {
+    display: block;
+    color: #101828;
+    text-align: center;
+    position: relative;
+}
+.navList .navItem:hover,
+.navList .navItem:focus {
+    font-weight: 600;
+    color: brown;
+}
+
+.navItem.current {
+    position: relative;
+}
+
+.navList .navItem::after,
+.navItem.current::before {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #101828;
+    /* transform: translateX(-50%); */
+}
+
+.navList .navItem::after {
+    opacity: 0;
+    transition: opacity 250ms ease-in-out;
+}
+.navList .navItem:hover::after,
+.navList .navItem:focus::after {
+    opacity: 1;
+}
+
+.borderSection {
+    border-top: 2px solid #e4e7f1;
+    margin-bottom: 44px;
+}
+.reviewsFeaturesAndBook {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+}
+.reviewsAndFeatures {
+    display: flex;
+    padding: 44px 52px;
+    width: 631px;
+    background: #f7f7f7;
+    border-radius: 10px;
+}
+.features {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 44px;
+    
+
+}
+
+.borderDetails {
+    border-top: 1px solid #e4e7f1;
+    margin: 24px 0;
+}
+
+.Reviews {}
+.book {
+    height: 588px;
+    width: 641px;
 }

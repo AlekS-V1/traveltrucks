@@ -1,4 +1,4 @@
-import { Camper } from "@/lib/api";
+import { Camper } from "@/type/type"
 import Link from "next/link";
 
 type CamperItemProps = {

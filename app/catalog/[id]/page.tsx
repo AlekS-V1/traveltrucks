@@ -1,9 +1,7 @@
 import { getCamperbyId } from "@/lib/api";
 import css from "./CamperDetail.module.css";
 import Image from "next/image";
-import Link from "next/link";
-import VehicleDetails from "@/components/VehicleDetails/VehicleDetails";
-import CamperOptions from "@/components/CamperOptions/CamperOptions";
+import TabsContainer from "@/components/TabsContainer/TabsContainer";
 
 export default async function CamperDetail({ params }: { params: Promise<{ id: string }> }) {
   const resolved = await params;
@@ -13,7 +11,6 @@ export default async function CamperDetail({ params }: { params: Promise<{ id: s
   if (!camper) {
     return <p>Camper not found</p>;
   }
-
   return (
 
   <div className={css.camperCard}>                        
@@ -54,44 +51,19 @@ export default async function CamperDetail({ params }: { params: Promise<{ id: s
     </div>
 
     <p className={css.description}>{camper.description}</p>
+     
+      <div className={css.reviewsFeaturesAndBook}>
+        <TabsContainer camper={camper} />       
+      </div>
+  </div>
+    
+)};
 
-    <div className={css.features}>
-        <CamperOptions camper={camper} />
-        <VehicleDetails camper={camper} />
-    </div>
-
+    
  
 
     {/* <div className={css.buttonShowMore}>
       <Link href={`/catalog/${camper.id}`}>Show more</Link>
       
     </div> */}
-  </div>
-
-  );
-}
-    
-    // <div>
-    //   <h2>{camper.name}</h2>
-    //   <p>{camper.description}</p>
-    //   <p>{camper.price}</p>
-    //   <p>{camper.rating}</p>
-    //   <div className={css.reviews}>{camper.reviews.map((r) =>(
-    //                     <div key={r.reviewer_name}>
-    //                         <span>{r.reviewer_rating}</span>
-    //                     </div>
-    //                 ))}</div>
-    //   <p>{camper.location}</p>
-    //   <p>{camper.transmission}</p>
-    //   <p>{camper.engine}</p>
-
-    //   {camper.AC && <p>AC</p>}
-    //   {camper.bathroom && <p>Bathroom</p>}
-    //   {camper.kitchen && <p>Kitchen</p>}
-    //   {camper.TV && <p>TV</p>}
-    //   {camper.radio && <p>Radio</p>}
-    //   {camper.refrigerator && <p>Refrigerator</p>}
-    //   {camper.microwave && <p>Microwave</p>}
-    //   {camper.gas && <p>Gas</p>}
-    //   {camper.water && <p>Water</p>}
-    // </div>
+  
