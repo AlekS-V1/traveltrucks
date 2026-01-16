@@ -1,3 +1,4 @@
+import StarRating from "../StarRating/StarRating";
 import css from "./ReviewItem.module.css"
 
 export interface ReviewersProps {  
@@ -15,7 +16,7 @@ const ReviewsItem = ({reviewer_name, reviewer_rating, comment}: ReviewersProps) 
                 <p className={css.avatar}>{reviewer_name[0].toUpperCase()}</p>
                 <div>
                     <h6 className={css.name}>{reviewer_name}</h6>
-                    <p>{reviewer_rating}</p>
+                    <StarRating rate={reviewer_rating} />
                 </div>
             </div>
             <div>

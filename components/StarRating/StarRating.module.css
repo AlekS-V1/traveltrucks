@@ -1,0 +1,153 @@
+/* Контейнер рейтингу */
+.rating {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Розміри */
+.rating-small .star {
+  width: 16px;
+  height: 16px;
+}
+
+.rating-medium .star {
+  width: 20px;
+  height: 20px;
+}
+
+.rating-large .star {
+  width: 24px;
+  height: 24px;
+}
+
+/* Статичний рейтинг */
+.ratingStatic {
+  pointer-events: none;
+}
+
+/* Контейнер зірок */
+.starContainer {
+  display: flex;
+  gap: 4px;
+}
+
+/* Одна зірка */
+.star {
+  position: relative;
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+}
+
+/* SVG всередині зірки */
+.star svg {
+  width: 100%;
+  height: 100%;
+  display: none; /* приховуємо все за замовчуванням */
+}
+
+/* Порожня зірка показується завжди */
+.starEmpty {
+  display: block;
+}
+
+/* Заповнена зірка показується тільки для активних */
+.starFilled {
+  display: none;
+}
+
+/* ===== ЛОГІКА ЗАПОВНЕННЯ ЗІРОК ===== */
+
+/* value-1 → перша зірка filled */
+.value-1 .star:nth-child(1) .starFilled {
+  display: block;
+}
+.value-1 .star:nth-child(1) .starEmpty {
+  display: none;
+}
+
+/* value-2 → перші 2 зірки filled */
+.value-2 .star:nth-child(-n+2) .starFilled {
+  display: block;
+}
+.value-2 .star:nth-child(-n+2) .starEmpty {
+  display: none;
+}
+
+/* value-3 → перші 3 зірки filled */
+.value-3 .star:nth-child(-n+3) .starFilled {
+  display: block;
+}
+.value-3 .star:nth-child(-n+3) .starEmpty {
+  display: none;
+}
+
+/* value-4 → перші 4 зірки filled */
+.value-4 .star:nth-child(-n+4) .starFilled {
+  display: block;
+}
+.value-4 .star:nth-child(-n+4) .starEmpty {
+  display: none;
+}
+
+/* value-5 → всі 5 зірок filled */
+.value-5 .star:nth-child(-n+5) .starFilled {
+  display: block;
+}
+.value-5 .star:nth-child(-n+5) .starEmpty {
+  display: none;
+}
+
+/* Прихований текст для ARIA */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* .rating {
+  --value: 3.5;
+  --stars: 5;
+  --star-size: 20px;
+  --star-color: #ffc531;
+  --star-bg: #f2f4f7;
+}
+
+.rating .stars {
+  display: inline-block;
+  position: relative;
+  font-size: var(--star-size);
+  line-height: 1;
+  letter-spacing: 2px;
+  height: var(--star-size);
+  width: calc(var(--stars) * var(--star-size) + (var(--stars) - 1) * 2px);
+}
+
+.rating .stars::before {
+  content: "★★★★★";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--star-bg);
+  white-space: nowrap;
+}
+
+.rating .stars::after {
+  content: "★★★★★";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--star-color);
+  white-space: nowrap;
+  width: calc(var(--value) / var(--stars) * 100%);
+  overflow: hidden;
+} */
