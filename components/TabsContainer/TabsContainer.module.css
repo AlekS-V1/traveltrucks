@@ -16,7 +16,9 @@
     position: relative;
     white-space: nowrap;
 }
-.navItem {}
+.navItem {
+    cursor: pointer;
+}
 
 .navList .navItem {
     display: block;
