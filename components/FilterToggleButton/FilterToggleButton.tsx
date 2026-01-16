@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import css from "./FilterToggleButton.module.css";
 import { CamperFilters } from "@/store/campers";
 
@@ -14,7 +14,7 @@ export interface FilterToggleButtonProps<T extends keyof CamperFilters> {
 
 
 export function FilterToggleButton<T extends keyof CamperFilters>({
-    filterKey,
+    // filterKey,
     isActive,
     onChange,
     label,

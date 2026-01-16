@@ -29,14 +29,14 @@
 }
 
 .navList .navItem.active {
-    font-weight: 600 !important;
-    color: brown !important;
+    font-weight: 600;
+    color: #101828;
 }
 
 .navList .navItem:hover,
 .navList .navItem:focus {
     font-weight: 600;
-    color: brown;
+    color: #101828;
 }
 
 .navItem.current {
@@ -51,7 +51,7 @@
     left: 0;
     width: 100%;
     height: 4px;
-    background-color: #101828;
+    background-color: #e44848;
 }
 
 .navList .navItem::after {

@@ -1,7 +1,7 @@
-import { Camper } from "@/lib/api"
+import { CamperProps } from "@/type/type"
 import css from "./VehicleDetails.module.css";
 
-const VehicleDetails = ({ camper }: { camper: Camper }) => {
+const VehicleDetails = ({ camper }: CamperProps) => {
   const details = [
     { label: "Form:", value: camper.form },
     { label: "Length:", value: camper.length },

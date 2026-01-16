@@ -94,7 +94,7 @@ export const CampersFilters = () => {
 
                 <h6 className={css.labelFiltr}>Vehicle equipment</h6>
               <div className={css.borderFiltr} />
-              <div className={css.filterButtons}>
+              <ul className={css.filterButtons}>
                 
                   {buttonsEquip.map((button) => (<li key={button.filterKey} className={css.options}>
                     <FilterToggleButton 
@@ -106,7 +106,7 @@ export const CampersFilters = () => {
                       label={button.label}
                     /></li>                      
                   ))}
-              </div>
+              </ul>
 
               </div>
               

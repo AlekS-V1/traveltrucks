@@ -28,7 +28,7 @@ const TabsContainer = ({ camper }: TabsContainerProps) => {
               {/* <div className={css.borderSection} /> */}
               <div className={css.tabContentAndBook}>
                      {activeTab === 0 && <FeaturesTab camper={camper} />}
-                     {activeTab === 1 && <ReviewsTab />}
+                     {activeTab === 1 && <ReviewsTab camper={camper} />}
                      <Book />
               </div>
        </div>

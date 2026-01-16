@@ -1,9 +1,9 @@
-import { Camper } from '@/type/type';
+import { CamperProps } from '@/type/type';
 import css from './FeaturesTab.module.css';
 import CamperOptions from '../CamperOptions/CamperOptions';
 import VehicleDetails from '../VehicleDetails/VehicleDetails';
 
-const FeaturesTab = ({camper}: {camper: Camper}) => {
+const FeaturesTab = ({camper}: CamperProps) => {
     return (
         
         <div className={css.features}>

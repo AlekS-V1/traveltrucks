@@ -1,4 +1,8 @@
-.reviews {
-    
+.reviews {    
     width: 631px;
+    list-style: none;
+}
+
+.reviewerItem {
+    margin-bottom: 44px;
 }
