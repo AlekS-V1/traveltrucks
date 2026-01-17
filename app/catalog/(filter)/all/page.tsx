@@ -1,9 +1,7 @@
 
 import CampersList from "@/components/CamperList/CamperList";
 
-
 const FilterPage = () => {
-
     return (
         <>
             {<CampersList />}

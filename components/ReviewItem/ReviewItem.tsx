@@ -1,11 +1,6 @@
+import { ReviewersProps } from "@/type/type";
 import StarRating from "../StarRating/StarRating";
 import css from "./ReviewItem.module.css"
-
-export interface ReviewersProps {  
-    reviewer_name: string;
-    reviewer_rating: number;
-    comment: string;       
-};
 
 const ReviewsItem = ({reviewer_name, reviewer_rating, comment}: ReviewersProps) => {
     

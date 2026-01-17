@@ -85,7 +85,9 @@ const CampersList = () => {
         </ul>
         {hasMore && (
             <button className={css.loadMore} 
-            onClick={incrementPage}>Load More</button>)}
+            onClick={incrementPage}>
+                Load More
+            </button>)}
     
     </>
         );

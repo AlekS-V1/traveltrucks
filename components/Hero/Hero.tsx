@@ -10,7 +10,7 @@ const Hero = () =>{
             <h2 className={css.heroTitle}>Campers of your dreams</h2>
             <p className={css.heroText}>You can find everything you want in our catalog</p>
           </div>
-          <Link href="/catalog/filter/all" className={css.heroButton}>View Now</Link>
+          <Link href="/catalog" className={css.heroButton}>View Now</Link>
         </div>
         </section>
     )

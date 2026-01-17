@@ -22,7 +22,7 @@ const TabsContainer = ({ camper }: TabsContainerProps) => {
               <nav className={css.navReviewsFeatures}>
                      <ul className={css.navList}>
                             <li onClick={() => handleTabClick(0)} className={`${css.navItem} ${activeTab === 0 ? css.active : ''}`}>Features</li>
-                            <li onClick={() => handleTabClick(1)} className={`${css.navItem} ${activeTab === 1 ? css.active : ''}`}>Reviews</li>
+                            <li onClick={() => handleTabClick(1)} className={`${css.navItem} ${activeTab === 1 ? css.active : ''}`} id="reviewers">Reviews</li>
                      </ul>
               </nav>
               {/* <div className={css.borderSection} /> */}

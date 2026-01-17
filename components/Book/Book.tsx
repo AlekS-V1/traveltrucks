@@ -1,6 +1,8 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import css from "./Book.module.css";
 import * as Yup from "yup";
+import FormikDatePicker from "../FormikDatePicker/FormikDatePicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 
 interface BookingFormValues {
@@ -8,25 +10,35 @@ interface BookingFormValues {
     email: string;
     booking_date: string;
     comment: string;
+    dateRange: [Date | null, Date | null];
+
 }
  const initialValues: BookingFormValues = {
     username: "",
     email: "",
     booking_date: "",
     comment: "",
+    dateRange: [null, null],
  }
 
- const BookFormSchema = Yup.object().shape({
+const BookFormSchema = Yup.object().shape({
   username: Yup.string()
     .min(2, "Name must be at least 2 characters")
     .max(30, "Name is too long")
     .required("Name is required"),
+
   email: Yup.string()
     .email("Invalid email format")
     .required("Email is required"),
-  booking_date: Yup.string()
-    .required("Date is required"),
+
   comment: Yup.string(),
+
+  dateRange: Yup.array()
+  .of(Yup.date().nullable())
+  .test("range", "Оберіть діапазон дат", (value) => {
+    return Boolean(value && value[0] && value[1]);
+  }),
+
 });
 
 
@@ -71,17 +83,11 @@ const Book = () => {
                     />
                 </fieldset>
                 <fieldset className={css.fieldset}>
-                    <Field 
-                        type="text" 
-                        name="booking_date" 
-                        className={css.input}
-                        placeholder="Booking date*" 
+                    <FormikDatePicker
+                        name="dateRange"
+                        placeholder="Booking date*"
                     />
-                    <ErrorMessage 
-                        name="booking_date" 
-                        component="span" 
-                        className={css.error} 
-                    />
+                   
                 </fieldset>
                 <fieldset className={css.fieldset}>
                     <Field 

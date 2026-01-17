@@ -41,13 +41,9 @@ export type Camper = {
 export type VehType = "panelTruck" | "fullyIntegrated" | "alcove";
 
 export interface ReviewersProps {
-  reviews: [
-        {
-          reviewer_name: string;
-          reviewer_rating: number;
-          comment: string;
-        }
-      ]
+  reviewer_name: string;
+  reviewer_rating: number;
+  comment: string;
 };
 
 export interface CamperProps {

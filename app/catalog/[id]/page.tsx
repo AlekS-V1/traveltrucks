@@ -2,8 +2,13 @@ import { getCamperbyId } from "@/lib/api";
 import css from "./CamperDetail.module.css";
 import Image from "next/image";
 import TabsContainer from "@/components/TabsContainer/TabsContainer";
+import Link from "next/link";
 
-export default async function CamperDetail({ params }: { params: Promise<{ id: string }> }) {
+interface CamperDetailProps {
+  params: Promise<{ id: string }> 
+}
+
+export default async function CamperDetail({ params }: CamperDetailProps) {
   const resolved = await params;
 
   const camper = await getCamperbyId(resolved.id);
@@ -24,12 +29,14 @@ export default async function CamperDetail({ params }: { params: Promise<{ id: s
     </div> 
 
     <div className={css.boxInfo}>
-      <p className={css.ratingInfo}>
-        <svg className={css.iconStar} width="16" height="16">
-          <use href='/sprite.svg#star_disable' />
-        </svg>{camper.rating}
-        <span className={css.rating}>({camper.reviews.length} Reviews)</span>
-      </p>
+      <Link href="#reviewers">
+        <p className={css.ratingInfo}>
+          <svg className={css.iconStar} width="16" height="16">
+            <use href='/sprite.svg#star_disable' />
+          </svg>{camper.rating}
+          <span className={css.rating}>({camper.reviews.length} Reviews)</span>
+        </p>
+      </Link>
 
       <p className={css.location}>
         <svg className={css.iconFilter} width="20" height="20">
