@@ -19,6 +19,7 @@ interface CamperStore {
   appliedFilters: CamperFilters;
   setDraftFilters: (filters: Partial<CamperFilters>) => void;
   applyFilters: () => void;
+  resetSearchState: () => void;
 
   page: number;
   limit: number;
@@ -27,6 +28,8 @@ interface CamperStore {
   incrementPage: () => void;
   resetItems: () => void;
   appendItems: (newItems: Camper[], total: number) => void;
+  hasSearched: boolean;
+
 };
 
 const defaultFilters: CamperFilters = {
@@ -45,6 +48,8 @@ export const useCampersFilters = create<CamperStore>((set, get) => ({
   limit: 4,
   items: [],
   total: 0,
+
+  hasSearched: false,
 
   incrementPage: () => 
     set((state) => ({ page: state.page + 1 })),
@@ -65,6 +70,7 @@ setDraftFilters: (filters) =>
   draftFilters: { ...state.draftFilters, ...filters },
 })),
 
+// hasSearch: false,
   applyFilters: () =>
   set((state) => ({
     appliedFilters: { ...state.draftFilters },
@@ -72,7 +78,18 @@ setDraftFilters: (filters) =>
     items: [],        // ← очищаємо картки
     page: 1,          // ← повертаємо на першу сторінку
     total: 0,         // ← скидаємо total
+    hasSearched: true,
   })),
+
+  resetSearchState: () =>
+  set({
+    items: [],
+    total: 0,
+    page: 1,
+    hasSearched: false,
+    appliedFilters: defaultFilters,
+  }),
+
   
 }));
 

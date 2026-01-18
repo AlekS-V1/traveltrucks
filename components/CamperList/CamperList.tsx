@@ -8,17 +8,35 @@ import { useCampersFilters } from "@/store/campers";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import { useEffect } from "react";
 import CamperOptions from "../CamperOptions/CamperOptions";
+import { useRouter } from "next/navigation";
 
 const CampersList = () => {
     const { data } = useCampersQuery();
-    const { appliedFilters, items, appendItems, incrementPage, page, total, limit } = useCampersFilters();
-      
-    useEffect(()=> {
+    const { appliedFilters, items, appendItems, incrementPage, page, total, limit, hasSearched, resetSearchState} = useCampersFilters();
+    const router = useRouter();
+    const noResults = hasSearched && total === 0; 
+    useEffect(() => {
         if (data?.items) {
             appendItems(data.items, data.total);
         }
     }, [data]);
+
+    useEffect(() =>{
+        if (noResults) {
+            const timer = setTimeout(() => {
+                resetSearchState();
+                router.push("/catalog/all");
+            }, 2500)
+            return () => clearTimeout(timer);
+        }
+    }, [noResults]);
+    
     if (!data) return <p>Loading...</p>;
+
+    if(noResults) {
+        
+        return <p>No Result</p>;
+    };
 
     const hasMore = page * limit < total;  
 

@@ -8,7 +8,6 @@ import "react-datepicker/dist/react-datepicker.css";
 interface BookingFormValues {
     username: string;
     email: string;
-    booking_date: string;
     comment: string;
     dateRange: [Date | null, Date | null];
 
@@ -16,7 +15,6 @@ interface BookingFormValues {
  const initialValues: BookingFormValues = {
     username: "",
     email: "",
-    booking_date: "",
     comment: "",
     dateRange: [null, null],
  }
@@ -35,7 +33,7 @@ const BookFormSchema = Yup.object().shape({
 
   dateRange: Yup.array()
   .of(Yup.date().nullable())
-  .test("range", "Оберіть діапазон дат", (value) => {
+  .test("range", "Booking date is required", (value) => {
     return Boolean(value && value[0] && value[1]);
   }),
 

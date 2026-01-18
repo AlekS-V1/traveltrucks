@@ -1,4 +1,4 @@
-.navReviewsFeatures {}
+
 .navList {
     display: flex;
     flex-direction: row;
@@ -8,7 +8,9 @@
     position: relative;
     white-space: nowrap;
 }
-.navItem {}
+.navItem {
+    cursor: pointer
+}
 
 .navList .navItem {
     display: block;
@@ -24,13 +26,13 @@
 
 .navList .navItem.active {
     font-weight: 600 !important;
-    color: brown !important;
+    color: e44848 !important;
 }
 
 .navList .navItem:hover,
 .navList .navItem:focus {
     font-weight: 600;
-    color: brown;
+    color: e44848;
 }
 
 .navList .navItem::after,

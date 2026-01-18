@@ -24,12 +24,14 @@
 }
 
 .input.error {
-  border-color: #ef4444;
+  border-color: #e44848;
 }
 
 .errorText {
-  color: #ef4444;
-  font-size: 12px;
+  color: #e44848;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
 }
 
 
@@ -82,7 +84,7 @@
 
 /* Обраний день */
 .calendar .react-datepicker__day--selected {
-  background-color: #f10909;
+  background-color: #e44848;
   color: white;
 }
 
@@ -116,6 +118,11 @@
   border-radius: 8px;
   background: white;
   padding: 8px;
+}
+.calendar :global(.FormikDatePicker_errorText) {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
 }
 
 /* Глобальні стилі всередині календаря */
