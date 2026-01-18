@@ -68,10 +68,12 @@ setDraftFilters: (filters) =>
   applyFilters: () =>
   set((state) => ({
     appliedFilters: { ...state.draftFilters },
+    draftFilters: { ...defaultFilters }, // ← очищаємо фільтри
     items: [],        // ← очищаємо картки
     page: 1,          // ← повертаємо на першу сторінку
     total: 0,         // ← скидаємо total
   })),
+  
 }));
 
 interface FavoritesState {
@@ -90,8 +92,8 @@ export const useFavoriteCampers = create<FavoritesState>()(persist<FavoritesStat
     toggleFavorite: (camperId) => {
         const updatedFavorites = new Set(get().favoriteCampers);
         updatedFavorites.has(camperId) 
-        ? updatedFavorites.delete(camperId) 
-        : updatedFavorites.add(camperId);
+          ? updatedFavorites.delete(camperId) 
+          : updatedFavorites.add(camperId);
         set({ favoriteCampers: updatedFavorites });
       },
 
@@ -100,10 +102,10 @@ export const useFavoriteCampers = create<FavoritesState>()(persist<FavoritesStat
 
   {
     name: "favorite-campers-storage",
-    // Set → Array conversion for persistence
+    // Перетворюємо в масив для збереження
     partialize: (state) => ({ favoriteCampers: [...state.favoriteCampers],
     }),
-    // Array → Set conversion on rehydration
+    // Регідрацією витягаємо з масива
     onRehydrateStorage: () => (state) => {
       if(state?.favoriteCampers) {
         state.favoriteCampers = new Set(state.favoriteCampers);
