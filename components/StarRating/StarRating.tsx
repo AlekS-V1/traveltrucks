@@ -37,26 +37,4 @@ export function StarRating({ rate, size = 'small' }: StarRatingProps) {
   );
 }
 
-// interface StarRatingProps {
-//     rate: number;    
-// }
-
-// const StarRating = ({rate}: StarRatingProps) => {
-    
-
-// return (
-//     <div
-//         className="rating"
-//         style={{ ['--value' as any]: rate }}
-//         role="meter"
-//         aria-valuemin={0}
-//         aria-valuemax={5}
-//         aria-valuenow={rate}
-//         aria-label={`Rating: ${rate} out of 5`}
-//     >
-//         <div className={css.stars} />
-//     </div>
-// );
-// }
-
 export default StarRating;

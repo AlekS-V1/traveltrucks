@@ -3,6 +3,7 @@ import css from "./Book.module.css";
 import * as Yup from "yup";
 import FormikDatePicker from "../FormikDatePicker/FormikDatePicker";
 import "react-datepicker/dist/react-datepicker.css";
+import toast from 'react-hot-toast';
 
 
 interface BookingFormValues {
@@ -46,6 +47,7 @@ const Book = () => {
         actions: FormikHelpers<BookingFormValues>,
     ) => {
         console.log("Booking:", values );
+        toast.success("Booking is succesfully!")
         actions.resetForm();
     }
     return (

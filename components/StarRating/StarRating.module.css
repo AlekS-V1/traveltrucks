@@ -48,7 +48,7 @@
 }
 
 /* Порожня зірка показується завжди */
-.starEmpty {
+.star .starEmpty {
   display: block;
 }
 
