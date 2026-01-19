@@ -35,7 +35,7 @@ const CampersList = () => {
 
     if(noResults) {
         
-        return <p>No Result</p>;
+        return <p>No Result! You direct on page Catalog All</p>;
     };
 
     const hasMore = page * limit < total;  

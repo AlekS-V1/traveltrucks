@@ -1,7 +1,7 @@
 'use client';
 
 import { useFavoriteCampers } from "@/store/campers";
-import css from "./FavoriteButton.module.css";
+import css from "./Favoritebutton.module.css";
 
 interface FavoriteButtonProps {
     camperId: string;
@@ -9,7 +9,6 @@ interface FavoriteButtonProps {
 
 export default function FavoriteButton({ camperId }: FavoriteButtonProps) {
     const toggleFavorite = useFavoriteCampers((state) => state.toggleFavorite);
-    // const isFavorite = useFavoriteCampers((state) => state.isFavorite(camperId));
     const isFavorite = useFavoriteCampers((state) => state.favoriteCampers.has(camperId));
 
     return (
