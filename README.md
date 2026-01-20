@@ -1,36 +1,239 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚐 TravelTrucks  — Camper Catalog with Filters, Details & Booking
+A modern Next.js  application for browsing and booking camper vans
 
-## Getting Started
+**TravelTrucks** is a responsive web application built with the **Next.js App Router** that helps users explore, filter them by features, view detailed information, read reviews, and book campers across Ukraine. The project focuses on clean architecture, modular design, and a smooth user experience.
 
-First, run the development server:
+The project emphasizes **clean architecture**, **modular components**, **SSR‑friendly patterns**, **TanStack Query**, and **isolated CSS Modules**.
+
+---
+
+## 🌐 Live Demo
+🔗 https://traveltrucks-gamma-five.vercel.app
+
+---
+
+## 🚀 Technologies
+
+- **Next.js 15+ (App Router)**
+- **React 18**
+- **TypeScript**
+- **TanStack Query**
+- **CSS Modules**
+- **React Hot Toast**
+- **Next.js API Routes** (mock backend)
+- **File‑based routing**
+- **SSR + Client Components**
+- **Vercel** for deployment
+
+---
+
+🧩 **Architecture Overview**
+The project follows a modular, feature‑oriented structure:
+
+**UI components are presentation‑only**  
+Business logic lives in feature modules.
+
+**Centralized state management**  
+Filters, catalog state, and tab logic are isolated in the store.
+
+**SSR‑safe implementation**  
+Fully compatible with Next.js  server components.
+
+**Strong typing**  
+All entities, filters, and API responses are fully typed.
+
+---
+
+
+## 📦 Installation & Setup
 
 ```bash
+
+# Install dependencies
+npm install
+
+# Run in development mode
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+├── app
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── page.module.css
+│   ├── page.tsx
+│   │
+│   ├── api
+│   │   └── campers
+│   │       ├── route.ts
+│   │       └── [id]
+│   │           └── route.ts
+│   │
+│   └── catalog
+│       ├── filter
+│       │   ├── layout.tsx
+│       │   ├── LayoutCatalog.module.css
+│       │   ├── @sidebar
+│       │   │   └── default.tsx
+│       │   └── all
+│       │       └── page.tsx
+│       │
+│       └── [id]
+│           ├── CamperDetail.module.css
+│           └── page.tsx
+│
+├── components
+│   ├── Book
+│   ├── CamperItem
+│   ├── CamperList
+│   ├── CamperOptions
+│   ├── CampersFilters
+│   ├── FavoriteButton
+│   ├── FeaturesTab
+│   ├── FilterToggleButton
+│   ├── Header
+│   ├── Hero
+│   ├── ReviewItem
+│   ├── ReviewsTab
+│   ├── StarRating
+│   ├── TabsButton
+│   ├── TabsContainer
+│   ├── TanStackProvider
+│   └── VehicleDetails
+│
+├── data
+│   └── campers.json
+│
+├── lib
+│   ├── api.ts
+│   └── useCampersQuery.ts
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🔌 API Endpoints
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The project uses **Next.js API Routes** as a mock backend.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### `GET /campers`
+Returns a list of all campers.
 
-## Deploy on Vercel
+### `GET /campers/[id]`
+Returns detailed information about a specific camper.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧩 Key Components
+
+### 🔎 **CamperList**
+Displays a list of campers fetched from the API.
+Browse available campers with filters for:
+- Vehicle type (Van, Alcove, Fully Integrated)
+- Equipment (AC, Automatic, Kitchen, TV, Bathroom)
+- City
+
+### 📄 **CamperItem**
+A single camper card with price.
+Full specifications
+User reviews
+Feature/Review tabs
+
+### **Campers Filters**
+Browse available campers with filters for:
+- Vehicle type (Van, Alcove, Fully Integrated)
+- Equipment (AC, Automatic, Kitchen, TV, Bathroom)
+- City
+
+### **FeaturesTab / ReviewsTab**
+Tabs for camper features and customer reviews.
+
+### 📅  **Book**
+Booking form.
+Date selection with DatePicker
+Validation
+Success/error notifications
+
+### **FavoriteButton**
+Stores favorite campers locally.
+
+### **TanStackProvider**
+Global provider for React Query.
+
+⚡ **Fast and responsive UI** 
+
+Optimized rendering, lightweight components, and smooth interactions.
+
+---
+
+🧩 **Architecture Overview**
+The project follows a modular, feature‑oriented structure:
+
+**UI components are presentation‑only**  
+Business logic lives in feature modules.
+
+**Centralized state management** 
+Filters, catalog state, and tab logic are isolated in the store.
+
+**SSR‑safe implementation**  
+Fully compatible with Next.js  server components.
+
+**Strong typing** 
+All entities, filters, and API responses are fully typed.
+
+---
+
+## 🗂️ Routes Overview
+
+### `/`
+Landing page with a hero section.
+
+### `/catalog`
+Catalog page with filters and camper list.
+
+### `/catalog/[id]`
+Camper detail page:
+- gallery  
+- specifications  
+- reviews  
+- booking form  
+
+---
+
+## ⚙️ Data Logic
+
+### `lib/api.ts`
+Utility functions for API requests.
+
+### `lib/useCampersQuery.ts`
+React Query hook for:
+- caching  
+- refetching  
+- loading states  
+
+---
+
+## 🎨 Styling
+
+All styles are implemented using **CSS Modules**, ensuring:
+- class name isolation  
+- no global conflicts  
+- maintainable structure  
+
+---
+
+## 🧪 Future Improvements
+
+- Real backend integration (Nest.js / Express)
+- Database‑backed bookings
+- Advanced filtering
+- Map with camper locations
+
+---
