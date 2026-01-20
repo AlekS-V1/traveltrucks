@@ -18,11 +18,17 @@ The project focuses on **clean architecture**, **modular design**, **SSR‑frien
 - **React 18**
 - **TypeScript**
 - **TanStack Query**
+- **Axios**
+- **Formik**
+- **Yup**
+- **Zustand**
 - **CSS Modules**
 - **React Hot Toast**
+- **DatePicker**
 - **Next.js API Routes** (mock backend)
 - **File‑based routing**
 - **SSR + Client Components**
+- **GitHub** for version control
 - **Vercel** for deployment
 
 ---
@@ -218,10 +224,3 @@ All styles use **CSS Modules**, providing:
 - Maintainable structure  
 
 ---
-
-## 🧪 Future Improvements
-
-- Real backend integration (Nest.js / Express)
-- Database‑backed bookings
-- Advanced filtering
-- Map with camper locations
