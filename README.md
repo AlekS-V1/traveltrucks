@@ -1,13 +1,13 @@
-# 🚐 TravelTrucks  — Camper Catalog with Filters, Details & Booking
-A modern Next.js  application for browsing and booking camper vans
 
-**TravelTrucks** is a responsive web application built with the **Next.js App Router** that helps users explore, filter them by features, view detailed information, read reviews, and book campers across Ukraine. The project focuses on clean architecture, modular design, and a smooth user experience.
+# 🚐 TravelTrucks — Camper Catalog with Filters, Details & Booking  
+A modern Next.js application for browsing and booking camper vans
 
-The project emphasizes **clean architecture**, **modular components**, **SSR‑friendly patterns**, **TanStack Query**, and **isolated CSS Modules**.
+**TravelTrucks** is a responsive web application built with the **Next.js App Router** that helps users explore campers across Ukraine, filter them by features, view detailed information, read reviews, and submit booking requests.  
+The project focuses on **clean architecture**, **modular design**, **SSR‑friendly patterns**, **TanStack Query**, and **isolated CSS Modules**.
 
 ---
 
-## 🌐 Live Demo
+## 🌐 Live Demo  
 🔗 https://traveltrucks-gamma-five.vercel.app
 
 ---
@@ -27,28 +27,37 @@ The project emphasizes **clean architecture**, **modular components**, **SSR‑f
 
 ---
 
-🧩 **Architecture Overview**
-The project follows a modular, feature‑oriented structure:
+## 🧩 Architecture Overview
 
-**UI components are presentation‑only**  
-Business logic lives in feature modules.
+The project follows a **modular, feature‑oriented architecture**:
 
-**Centralized state management**  
-Filters, catalog state, and tab logic are isolated in the store.
+### **Presentation Layer**
+- UI components are **pure and presentation‑only**
+- No business logic inside UI components
 
-**SSR‑safe implementation**  
-Fully compatible with Next.js  server components.
+### **Feature Modules**
+- Filtering logic  
+- Catalog state  
+- Tabs and UI state  
+- API interaction  
+All isolated in dedicated modules for maintainability.
 
-**Strong typing**  
-All entities, filters, and API responses are fully typed.
+### **State Management**
+- Centralized state for filters and catalog behavior
+- React Query handles server state (caching, refetching, loading)
+
+### **SSR‑Safe Implementation**
+- Fully compatible with Next.js Server Components
+- Client components used only where necessary
+
+### **Strong Typing**
+- All entities, filters, and API responses are fully typed with TypeScript
 
 ---
-
 
 ## 📦 Installation & Setup
 
 ```bash
-
 # Install dependencies
 npm install
 
@@ -134,59 +143,40 @@ Returns detailed information about a specific camper.
 ## 🧩 Key Components
 
 ### 🔎 **CamperList**
-Displays a list of campers fetched from the API.
-Browse available campers with filters for:
-- Vehicle type (Van, Alcove, Fully Integrated)
-- Equipment (AC, Automatic, Kitchen, TV, Bathroom)
-- City
+Displays a list of campers with support for:
+- Vehicle type filtering (Van, Alcove, Fully Integrated)
+- Equipment filtering (AC, Automatic, Kitchen, TV, Bathroom)
+- City filtering
 
 ### 📄 **CamperItem**
-A single camper card with price.
-Full specifications
-User reviews
-Feature/Review tabs
+A single camper card showing:
+- Price  
+- Specifications  
+- Rating  
+- Feature/Review tabs  
 
-### **Campers Filters**
-Browse available campers with filters for:
-- Vehicle type (Van, Alcove, Fully Integrated)
-- Equipment (AC, Automatic, Kitchen, TV, Bathroom)
-- City
+### **CampersFilters**
+Interactive filtering UI with:
+- Vehicle type  
+- Equipment  
+- City  
 
 ### **FeaturesTab / ReviewsTab**
-Tabs for camper features and customer reviews.
+Tabs for:
+- Camper features  
+- Customer reviews  
 
-### 📅  **Book**
-Booking form.
-Date selection with DatePicker
-Validation
-Success/error notifications
+### 📅 **Book**
+Booking form with:
+- DatePicker  
+- Validation  
+- Success/error notifications  
 
-### **FavoriteButton**
+### ⭐ **FavoriteButton**
 Stores favorite campers locally.
 
-### **TanStackProvider**
+### ⚙️ **TanStackProvider**
 Global provider for React Query.
-
-⚡ **Fast and responsive UI** 
-
-Optimized rendering, lightweight components, and smooth interactions.
-
----
-
-🧩 **Architecture Overview**
-The project follows a modular, feature‑oriented structure:
-
-**UI components are presentation‑only**  
-Business logic lives in feature modules.
-
-**Centralized state management** 
-Filters, catalog state, and tab logic are isolated in the store.
-
-**SSR‑safe implementation**  
-Fully compatible with Next.js  server components.
-
-**Strong typing** 
-All entities, filters, and API responses are fully typed.
 
 ---
 
@@ -200,10 +190,10 @@ Catalog page with filters and camper list.
 
 ### `/catalog/[id]`
 Camper detail page:
-- gallery  
-- specifications  
-- reviews  
-- booking form  
+- Gallery  
+- Specifications  
+- Reviews  
+- Booking form  
 
 ---
 
@@ -214,18 +204,18 @@ Utility functions for API requests.
 
 ### `lib/useCampersQuery.ts`
 React Query hook for:
-- caching  
-- refetching  
-- loading states  
+- Caching  
+- Refetching  
+- Loading states  
 
 ---
 
 ## 🎨 Styling
 
-All styles are implemented using **CSS Modules**, ensuring:
-- class name isolation  
-- no global conflicts  
-- maintainable structure  
+All styles use **CSS Modules**, providing:
+- Class name isolation  
+- No global conflicts  
+- Maintainable structure  
 
 ---
 
@@ -235,5 +225,3 @@ All styles are implemented using **CSS Modules**, ensuring:
 - Database‑backed bookings
 - Advanced filtering
 - Map with camper locations
-
----
